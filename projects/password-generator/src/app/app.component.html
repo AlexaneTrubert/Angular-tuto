@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Générez un mot de passe fort</h1>
+
+  <div class="grid">
+    <div>
+      <h3>Votre futur mot de passe :</h3>
+      <article>{{ message }}</article>
+    </div>
+
+    <div>
+      <label for="length">Longueur du mot de passe : {{ length }}</label>
+      <input (input)="onChangeLength($event)" id="length" type="range" min="10" max="40" name="length">
+
+      <label>
+        <input #uppercaseInput (change)="onChangeSettings(uppercaseInput.name, uppercaseInput.checked)" role="switch" type="checkbox" name="uppercase" id="uppercase">
+        Contiendra des majuscules
+      </label>
+
+      <label>
+        <input #numbersInput (change)="onChangeSettings(numbersInput.name, numbersInput.checked)" role="switch" type="checkbox" name="numbers" id="numbers">
+        Contiendra des nombres
+      </label>
+
+      <label>
+        <input #symbolsInput (change)="onChangeSettings(symbolsInput.name, symbolsInput.checked)" role="switch" type="checkbox" name="symbols" id="symbols">
+        Contiendra des caractères spéciaux
+      </label>
+
+      <hr>
+      <button (click)="onClickGenerate()">Générer</button>
+    </div>
+  </div>
+</div>
