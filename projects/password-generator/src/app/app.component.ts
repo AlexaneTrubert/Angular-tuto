@@ -13,7 +13,7 @@ export class AppComponent {
   symbols = false;
 
   onClickGenerate() {
-    this.message = 'Mot de passe généré';
+    this.message = 'MON_MOT_DE_PASSE';
     console.log("Génération du mot de passe avec :");
     console.table({
       uppercase: this.uppercase,
