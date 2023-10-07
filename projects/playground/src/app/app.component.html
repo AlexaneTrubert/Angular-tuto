@@ -1,17 +1,8 @@
 <h1>Découverte Angular</h1>
 
-<a no-open href="https://google.com">Google !</a>
+<input value="Alexane" force-lower type="text" placeholder="Prénom">
 
-<a confirm confirm-message="Vraiment ?" href="https://twitter.com">Twitter !</a>
+<p [ngClass]="{red: age >=18, bold: nationalite === 'Suisse'}" [ngStyle]="{backgroundColor: getBgColor()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, excepturi neque odit optio quaerat sapiente!</p>
 
-<h3>Bonjour</h3>
-
-<p highlight>
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate tenetur velit voluptatibus. At, cumque
-  distinctio fugit ipsa necessitatibus nesciunt nisi non, quas suscipit vero voluptatibus.
-</p>
-
-<p highlight background-color="blue" base-color="purple">
-  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti excepturi ipsum magni possimus reprehenderit
-  similique.
-</p>
+<button (click)="age = 12">Changer l'âge</button>
+<button (click)="nationalite = 'Française'">Changer la nationalité</button>
