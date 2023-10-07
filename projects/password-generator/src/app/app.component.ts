@@ -22,15 +22,4 @@ export class AppComponent {
       length: this.length
     })
   }
-
-  onChangeLength(event: Event) {
-    this.length = +(event.target as HTMLInputElement).value;
-  }
-
-  onChangeSettings(settingName: string, settingValue: boolean) {
-    if (settingName !== 'uppercase' && settingName !== 'numbers' && settingName !== 'symbols') {
-      return
-    }
-    this[settingName] = settingValue;
-  }
 }
