@@ -1,0 +1,7 @@
+<h3>{{ title }}</h3>
+
+<input #email type="email" placeholder="{{ placeholder }}">
+<ng-content select="p"></ng-content>
+<button (click)="onConfirmNewsletter(email.value)">{{ buttonTxt }}</button>
+
+<ng-content></ng-content>
