@@ -11,6 +11,8 @@ import {ModelDirective} from "./directives-attributs/model.directive";
 import {FormsModule} from "@angular/forms";
 import {SetClassesDirective} from "./directives-attributs/set-classes.directive";
 import {ForceLowerDirective} from "./directives-attributs/force-lower.directive";
+import {NewsletterComponent} from "./components/newsletter.component";
+import {CardComponent} from "./components/card.component";
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import {ForceLowerDirective} from "./directives-attributs/force-lower.directive"
     ModelDirective,
     SetClassesDirective,
     ForceLowerDirective,
+    NewsletterComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

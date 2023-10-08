@@ -1,8 +1,18 @@
 <h1>Découverte Angular</h1>
 
-<input value="Alexane" force-lower type="text" placeholder="Prénom">
+<newsletter
+  (confirm)="onConfirm($event)"
+  title="Recevez nos courriers"
+  button-text="Confirmer"
+  placeholder="Votre adresse mail svp">
+  <p>Vous recevrez l'ensemble de nos informations !</p>
+  <a href="#">En savoir plus</a>
+</newsletter>
 
-<p [ngClass]="{red: age >=18, bold: nationalite === 'Suisse'}" [ngStyle]="{backgroundColor: getBgColor()}">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, excepturi neque odit optio quaerat sapiente!</p>
-
-<button (click)="age = 12">Changer l'âge</button>
-<button (click)="nationalite = 'Française'">Changer la nationalité</button>
+<card title="Ma carte">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius ipsam nihil officia quae, totam?</p>
+  <p>Lorem ipsum dolor sit amet.</p>
+  <footer>
+    <a href="#">En savoir plus</a>
+  </footer>
+</card>
