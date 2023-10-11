@@ -2,6 +2,9 @@ import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
 import {Spectator, createComponentFactory} from "@ngneat/spectator";
 import {FormsModule} from "@angular/forms";
+import {PasswordDisplayComponent} from "./components/password-display.component";
+import {PasswordControlsComponent} from "./components/password-controls.component";
+import {PasswordSettingsComponent} from "./components/password-settings.component";
 
 describe('AppComponent (avec Spectator)', () => {
   let spectator: Spectator<AppComponent>;
@@ -9,7 +12,10 @@ describe('AppComponent (avec Spectator)', () => {
 
   const createComponent = createComponentFactory({
     component: AppComponent,
-    declarations: [AppComponent],
+    declarations: [AppComponent,
+      PasswordDisplayComponent,
+      PasswordControlsComponent,
+      PasswordSettingsComponent],
     imports: [FormsModule],
   });
 
@@ -30,19 +36,19 @@ describe('AppComponent (avec Spectator)', () => {
 
   it("should update settings when user clicks on checkboxes", () => {
     spectator.click('#uppercase');
-    expect(component.uppercase).toBeTrue();
+    expect(component.settings.uppercase).toBeTrue();
 
     spectator.click('#numbers');
-    expect(component.uppercase).toBeTrue();
+    expect(component.settings.uppercase).toBeTrue();
 
     spectator.click('#symbols');
-    expect(component.uppercase).toBeTrue();
+    expect(component.settings.uppercase).toBeTrue();
   });
 
   it("should update length when user changes length input", () => {
     spectator.typeInElement('33', '#length');
 
-    expect(component.length).toBe(33);
+    expect(component.settings.length).toBe(33);
   });
 });
 
@@ -52,7 +58,10 @@ describe('AppComponent (avec TestBed)', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent,
+        PasswordDisplayComponent,
+        PasswordControlsComponent,
+        PasswordSettingsComponent],
       imports: [FormsModule],
     }).compileComponents();
 
@@ -77,13 +86,13 @@ describe('AppComponent (avec TestBed)', () => {
 
   it("should update settings when user clicks on checkboxes", async () => {
     fixture.nativeElement.querySelector('#uppercase').click();
-    expect(component.uppercase).toBeTrue();
+    expect(component.settings.uppercase).toBeTrue();
 
     fixture.nativeElement.querySelector('#numbers').click();
-    expect(component.uppercase).toBeTrue();
+    expect(component.settings.uppercase).toBeTrue();
 
     fixture.nativeElement.querySelector('#symbols').click();
-    expect(component.uppercase).toBeTrue();
+    expect(component.settings.uppercase).toBeTrue();
   });
 
   it("should update length when user changes length input", async () => {
@@ -91,6 +100,6 @@ describe('AppComponent (avec TestBed)', () => {
     length.value = 33;
     length.dispatchEvent(new Event('input'));
 
-    expect(component.length).toBe(33);
+    expect(component.settings.length).toBe(33);
   });
 });

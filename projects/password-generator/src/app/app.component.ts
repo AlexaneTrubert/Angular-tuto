@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Settings} from "./types";
 
 @Component({
   selector: 'app-root',
@@ -7,19 +8,25 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   message = 'Cliquez sur le bouton "Générer"';
-  length= 20;
-  uppercase = false;
-  numbers = false;
-  symbols = false;
+
+  settings: Settings = {
+    length: 30,
+    uppercase: false,
+    numbers: false,
+    symbols: false
+  }
+
+  get settingsCopy() {
+    return {...this.settings};
+  }
 
   onClickGenerate() {
     this.message = 'MON_MOT_DE_PASSE';
     console.log("Génération du mot de passe avec :");
-    console.table({
-      uppercase: this.uppercase,
-      numbers: this.numbers,
-      symbols: this.symbols,
-      length: this.length
-    })
+    console.table(this.settings);
+  }
+
+  onSettingsChange(obj: Settings) {
+    this.settings = obj;
   }
 }
