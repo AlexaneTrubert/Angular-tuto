@@ -2,32 +2,12 @@
   <h1>Générez un mot de passe fort</h1>
 
   <div class="grid">
-    <div>
-      <h3>Votre futur mot de passe :</h3>
-      <article>{{ message }}</article>
-    </div>
+    <password-display [message]="message"></password-display>
 
     <div>
-      <label for="length">Longueur du mot de passe : {{ length }}</label>
-      <input [(ngModel)]="length" id="length" type="range" min="10" max="40" name="length">
-
-      <label>
-        <input [(ngModel)]="uppercase" role="switch" type="checkbox" name="uppercase" id="uppercase">
-        Contiendra des majuscules
-      </label>
-
-      <label>
-        <input [(ngModel)]="numbers" role="switch" type="checkbox" name="numbers" id="numbers">
-        Contiendra des nombres
-      </label>
-
-      <label>
-        <input [(ngModel)]="symbols" role="switch" type="checkbox" name="symbols" id="symbols">
-        Contiendra des caractères spéciaux
-      </label>
-
+      <password-settings (settings-change)="onSettingsChange($event)" [default-settings]="settingsCopy"></password-settings>
       <hr>
-      <button (click)="onClickGenerate()">Générer</button>
+      <password-controls (generate)="onClickGenerate()"></password-controls>
     </div>
   </div>
 </div>
