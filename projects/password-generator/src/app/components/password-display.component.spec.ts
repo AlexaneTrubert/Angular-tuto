@@ -1,7 +1,7 @@
 import {TestBed} from "@angular/core/testing";
 import {PasswordDisplayComponent} from "./password-display.component";
 import {Component} from "@angular/core";
-import {createComponentFactory, createHostFactory, Spectator, SpectatorHost} from "@ngneat/spectator";
+import {createHostFactory, SpectatorHost} from "@ngneat/spectator";
 
 @Component({
   selector: 'test',
