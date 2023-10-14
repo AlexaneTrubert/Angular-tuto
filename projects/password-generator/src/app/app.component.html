@@ -2,7 +2,7 @@
   <h1>Générez un mot de passe fort</h1>
 
   <div class="grid">
-    <password-display [message]="message"></password-display>
+    <password-display [password]="password"></password-display>
 
     <div>
       <password-settings (settings-change)="onSettingsChange($event)" [default-settings]="settingsCopy"></password-settings>

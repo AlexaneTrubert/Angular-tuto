@@ -6,13 +6,21 @@ import {createComponentFactory, createHostFactory, Spectator, SpectatorHost} fro
 @Component({
   selector: 'test',
   template: `
-    <password-display message="MOCK_MESSAGE"></password-display>`
+    <password-display password="MOCK_PASSWORD"></password-display>`
 })
 class TestComponent {
 }
 
+@Component({
+  selector: 'test',
+  template: `
+    <password-display></password-display>`
+})
+class TestDefaultComponent {
+}
+
 describe('PasswordDisplayComponent (avec TestBed)', () => {
-  it('should display the input message', () => {
+  it('Should display the input password', () => {
     TestBed.configureTestingModule({
       declarations: [PasswordDisplayComponent, TestComponent]
     });
@@ -22,7 +30,19 @@ describe('PasswordDisplayComponent (avec TestBed)', () => {
 
     const article = fixture.nativeElement.querySelector('article');
 
-    expect(article.textContent).toContain("MOCK_MESSAGE");
+    expect(article.textContent).toContain("MOCK_PASSWORD");
+  });
+
+  it("Should display a phrase when nos password is given", () => {
+    TestBed.configureTestingModule({
+      declarations: [PasswordDisplayComponent, TestDefaultComponent]
+    });
+    const fixture = TestBed.createComponent(TestDefaultComponent);
+    fixture.autoDetectChanges();
+
+    const article = fixture.nativeElement.querySelector('article');
+
+    expect(article.textContent).toContain("Cliquez sur le bouton \"Générer\"");
   });
 });
 
@@ -33,9 +53,15 @@ describe('PasswordDisplayComponent (avec Spectator)', () => {
     component: PasswordDisplayComponent
   });
 
-  beforeEach(() => spectator = createComponent(`<password-display message="MOCK_MESSAGE"></password-display>`));
+  it("Should display a phrase when nos password is given", () => {
+    spectator = createComponent(`<password-display></password-display>`);
 
-  it('should display the input message', () => {
-    expect(spectator.query('article')).toHaveText('MOCK_MESSAGE');
+    expect(spectator.query('article')).toHaveText("Cliquez sur le bouton \"Générer\"");
+  });
+
+  it('Should display the input password', () => {
+    spectator = createComponent(`<password-display password="MOCK_PASSWORD"></password-display>`)
+
+    expect(spectator.query('article')).toHaveText('MOCK_PASSWORD');
   });
 });
