@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import { PasswordDisplayComponent } from './components/password-display.component';
 import { PasswordControlsComponent } from './components/password-controls.component';
 import { PasswordSettingsComponent } from './components/password-settings.component';
+import {PasswordGeneratorService} from "./password-generator.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { PasswordSettingsComponent } from './components/password-settings.compon
     BrowserModule,
     FormsModule,
   ],
-  providers: [],
+  providers: [PasswordGeneratorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
