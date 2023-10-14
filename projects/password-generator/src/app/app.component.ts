@@ -7,7 +7,7 @@ import {Settings} from "./types";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  message = 'Cliquez sur le bouton "Générer"';
+  password?: string;
 
   settings: Settings = {
     length: 30,
@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   onClickGenerate() {
-    this.message = 'MON_MOT_DE_PASSE';
+    this.password = 'MON_MOT_DE_PASSE';
     console.log("Génération du mot de passe avec :");
     console.table(this.settings);
   }

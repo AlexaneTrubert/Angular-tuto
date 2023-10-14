@@ -1,18 +1,29 @@
 <h1>Découverte Angular</h1>
 
-<newsletter
-  (confirm)="onConfirm($event)"
-  title="Recevez nos courriers"
-  button-text="Confirmer"
-  placeholder="Votre adresse mail svp">
-  <p>Vous recevrez l'ensemble de nos informations !</p>
-  <a href="#">En savoir plus</a>
-</newsletter>
+<h2>Pagination</h2>
+<a href="#" *repeat="pages; let numero">Page {{ numero }}</a>
+<button (click)="pages = pages + 1">Ajouter une page</button>
 
-<card title="Ma carte">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque eius ipsam nihil officia quae, totam?</p>
-  <p>Lorem ipsum dolor sit amet.</p>
-  <footer>
-    <a href="#">En savoir plus</a>
-  </footer>
-</card>
+<ul>
+  <li *ngFor="let personne of personnes; let numero = index">
+    {{ personne.prenom }} {{ personne.nom }} (Numéro {{ numero + 1 }})
+  </li>
+</ul>
+
+<button (click)="addPersonne()">Ajouter</button>
+
+<div *ngIf="age >= 18; else autre">
+  <h2>Vous êtes majeur !</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A commodi consequuntur cumque earum obcaecati officia
+    possimus quas quia. Ad architecto dolorum molestiae quae recusandae! Nisi!</p>
+  <button>Accéder au site !</button>
+</div>
+
+<ng-template #autre>
+  <h2>Vous n'êtes pas majeur</h2>
+  <p>Veuillez sortir du site !</p>
+</ng-template>
+
+<input type="number" placeholder="Votre âge" #ageInput>
+<button (click)="age = ageInput.valueAsNumber">Modifier l'âge</button>
+
