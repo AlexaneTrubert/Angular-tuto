@@ -54,6 +54,15 @@ describe('AppComponent (avec Spectator)', () => {
 
     expect(component.settings.length).toBe(33);
   });
+
+  it("Should show a copy button when password was generated", () => {
+    const service = spectator.inject(PasswordGeneratorService);
+    service.generate.and.returnValue('MOCK_PASSWORD');
+
+    spectator.click('#generate');
+
+    expect(spectator.query('#copy')).toBeTruthy();
+  });
 });
 
 describe('AppComponent (avec TestBed)', () => {
@@ -105,5 +114,15 @@ describe('AppComponent (avec TestBed)', () => {
     length.dispatchEvent(new Event('input'));
 
     expect(component.settings.length).toBe(33);
+  });
+
+  it("Should show a copy button when password was generated", () => {
+    const service = TestBed.inject(PasswordGeneratorService);
+    const spy = spyOn(service, 'generate').and.returnValue('MOCK_PASSWORD');
+
+    fixture.nativeElement.querySelector('#generate').click();
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('#copy')).toBeTruthy();
   });
 });
