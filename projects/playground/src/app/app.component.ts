@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +6,16 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  onConfirm(email: string) {
-    console.log("Depuis l'extérieur du component : click sur le bouton", email);
+  age = 35;
+  pages = 5;
+
+  personnes = [
+    { prenom: 'Alexane', nom: 'Bruchacsek'},
+    { prenom: 'Elodie', nom: 'Gareil'},
+    { prenom: 'Tokyo', nom: 'Trubert'},
+  ]
+
+  addPersonne() {
+    this.personnes.push({ prenom: 'John', nom: 'Doe'});
   }
 }
