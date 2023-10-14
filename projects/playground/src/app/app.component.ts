@@ -1,21 +1,12 @@
 import {Component, TemplateRef, ViewChild, ViewContainerRef} from '@angular/core';
+import {TaxesService} from "./services/taxes.service";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // providers: [TaxesService],
 })
 export class AppComponent {
-  age = 35;
-  pages = 5;
 
-  personnes = [
-    { prenom: 'Alexane', nom: 'Bruchacsek'},
-    { prenom: 'Elodie', nom: 'Gareil'},
-    { prenom: 'Tokyo', nom: 'Trubert'},
-  ]
-
-  addPersonne() {
-    this.personnes.push({ prenom: 'John', nom: 'Doe'});
-  }
 }
